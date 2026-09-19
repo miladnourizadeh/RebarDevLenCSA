@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebar Development Length Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f9; color: #333; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { font-size: 1.2rem; margin-top: 0; color: #0056b3; }
+        label { display: block; margin-top: 10px; font-weight: bold; font-size: 0.9rem; }
+        input { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #0056b3; color: white; border: none; padding: 10px; width: 100%; margin-top: 15px; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+        button:hover { background: #003d82; }
+        .result { margin-top: 20px; background: #e9ecef; padding: 10px; border-radius: 4px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Rebar Development Length ($l_d$)</h2>
+    
+    <label for="db">Bar Diameter ($d_b$ in mm):</label>
+    <input type="number" id="db" placeholder="e.g., 20">
+
+    <label for="fy">Yield Strength ($f_y$ in MPa):</label>
+    <input type="number" id="fy" placeholder="e.g., 400" value="400">
+
+    <label for="fc">Concrete Strength ($f'_c$ in MPa):</label>
+    <input type="number" id="fc" placeholder="e.g., 30" value="30">
+
+    <button onclick="calculateDevelopmentLength()">Calculate</button>
+
+    <div class="result" id="resultArea">Development Length: -- mm</div>
+</div>
+
+<script>
+function calculateDevelopmentLength() {
+    let db = parseFloat(document.getElementById('db').value);
+    let fy = parseFloat(document.getElementById('fy').value);
+    let fc = parseFloat(document.getElementById('fc').value);
+
+    if (!db || !fy || !fc) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Example simplified formula logic (Replace with your specific code formula like ACI/CSA)
+    // Basic conceptual placeholder: ld = (fy / (2.1 * sqrt(fc))) * db (Modify as needed)
+    let ld = (fy / (2.1 * Math.sqrt(fc))) * db;
+
+    document.getElementById('resultArea').innerText = "Development Length: " + ld.toFixed(1) + " mm";
+}
+</script>
+
+</body>
+</html>
